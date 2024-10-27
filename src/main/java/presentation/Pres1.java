@@ -13,13 +13,17 @@ public class Pres1 {
     public static void main(String[] args) {
         try {
             // Chargement du nom de la classe Dao depuis le fichier de configuration
-            Scanner scanner = new Scanner(new File("Configure.txt"));
+//            Scanner scanner = new Scanner(new File("Configure.txt"));
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Dao:");
             String daoClassName = scanner.nextLine();
             Class<?> cDao = Class.forName(daoClassName);
             IDao dao = (IDao) cDao.getConstructor().newInstance();
+            System.out.println("aaa");
             System.out.println("Données du Dao : " + dao.getData());
-
+            System.out.println("aaa");
             // Chargement du nom de la classe Metier depuis le fichier de configuration
+            System.out.println("Metieer:");
             String metierClassName = scanner.nextLine();
             Class<?> cMetier = Class.forName(metierClassName);
             IMetier metier = (IMetier) cMetier.getConstructor().newInstance();
@@ -33,8 +37,7 @@ public class Pres1 {
             // Calcul avec l'instance de Metier
             System.out.println("Calcul avec MetierImpl : " + metier.calcul());
 
-        } catch (FileNotFoundException e) {
-            System.out.println("Erreur : Fichier Configure.txt non trouvé.");
+
         } catch (ClassNotFoundException e) {
             System.out.println("Erreur : Classe spécifiée dans Configure.txt non trouvée.");
         } catch (NoSuchMethodException e) {
